@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224 52" width="224" height="52" role="img" aria-label="T3S Lab">
+  <title>T3S Lab</title>
+
+  <!-- pin notches -->
+  <g stroke="#ffffff" stroke-width="2" stroke-linecap="square" fill="none">
+    <!-- top -->
+    <line x1="14" y1="0"  x2="14" y2="6"/>
+    <line x1="26" y1="0"  x2="26" y2="6"/>
+    <line x1="38" y1="0"  x2="38" y2="6"/>
+    <!-- bottom -->
+    <line x1="14" y1="46" x2="14" y2="52"/>
+    <line x1="26" y1="46" x2="26" y2="52"/>
+    <line x1="38" y1="46" x2="38" y2="52"/>
+    <!-- left -->
+    <line x1="0"  y1="14" x2="6"  y2="14"/>
+    <line x1="0"  y1="26" x2="6"  y2="26"/>
+    <line x1="0"  y1="38" x2="6"  y2="38"/>
+    <!-- right -->
+    <line x1="46" y1="14" x2="52" y2="14"/>
+    <line x1="46" y1="26" x2="52" y2="26"/>
+    <line x1="46" y1="38" x2="52" y2="38"/>
+  </g>
+
+  <!-- outer die -->
+  <rect x="7" y="7" width="38" height="38" rx="2.5"
+        fill="none" stroke="#ffffff" stroke-width="2"/>
+
+  <!-- inner core -->
+  <rect x="16" y="16" width="20" height="20" rx="1.5"
+        fill="#d86a2a"/>
+
+  <!-- T letterform -->
+  <g stroke="#ffffff" stroke-width="2.5" stroke-linecap="square" fill="none">
+    <line x1="19.5" y1="22"   x2="32.5" y2="22"/>
+    <line x1="26"   y1="22"   x2="26"   y2="31"/>
+  </g>
+
+  <!-- wordmark -->
+  <text
+    x="68" y="26"
+    dominant-baseline="central"
+    font-family="-apple-system, BlinkMacSystemFont, 'IBM Plex Sans', 'Segoe UI', sans-serif"
+    font-size="28"
+    letter-spacing="0.5"
+  >
+    <tspan font-weight="700" fill="#ffffff">T3S</tspan><tspan
+      dx="8"
+      font-weight="300"
+      fill="#d86a2a"
+      letter-spacing="3"
+    >LAB</tspan>
+  </text>
+</svg>
