@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://T3SLab.github.io/sitemap.xml
