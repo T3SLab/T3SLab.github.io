@@ -72,7 +72,7 @@ function CTFsContent() {
           },
           { label: "Writeups published", value: String(totalWriteups) },
           { label: "Captain", value: "P. Patel" },
-        ].map((s) => (
+        ].map((s, i) => (
           <div
             key={s.label}
             className="flex flex-col"
