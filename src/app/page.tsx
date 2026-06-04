@@ -288,7 +288,7 @@ function DirectorSection() {
       <div className="grid gap-(--space-7) items-start grid-cols-1 md:grid-cols-[260px_1fr]">
         {/* Portrait + links */}
         <div className="flex flex-col gap-(--space-4)">
-          <PortraitSlot label="PI portrait" width={260} height={320} />
+          <PortraitSlot src="/assets/pictures/armanuzzaman_portrait.jpg" alt="Dr. Md. Armanuzzaman" width={260} height={320} />
           <div className="flex flex-col gap-1.5 font-mono">
             {PI.links.map((l) => (
               <a

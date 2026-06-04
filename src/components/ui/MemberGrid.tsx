@@ -5,12 +5,8 @@ import { Avatar } from "@/components/ui/Avatar";
 import { MEMBERS, type Member, type MemberKind } from "@/data";
 
 const GROUPS: { key: MemberKind; title: string; size: "lg" | "md" | "sm" }[] = [
-  { key: "faculty", title: "Faculty", size: "lg" },
-  { key: "postdoc", title: "Postdoctoral researchers", size: "md" },
-  { key: "phd", title: "PhD students", size: "md" },
-  { key: "ms", title: "MS students", size: "md" },
-  { key: "undergrad", title: "Undergraduate researchers", size: "sm" },
-  { key: "alumni", title: "Alumni", size: "sm" },
+  { key: "faculty", title: "Professors", size: "lg" },
+  { key: "phd", title: "PhD Students", size: "md" },
 ];
 
 const AVATAR_SIZE = { lg: 128, md: 96, sm: 64 };
@@ -104,7 +100,7 @@ function MemberCard({
 }) {
   return (
     <div className="flex flex-col gap-3 transition-transform duration-150 hover:-translate-y-0.5 cursor-default">
-      <Avatar name={m.name} area={m.area} size={AVATAR_SIZE[size]} />
+      <Avatar name={m.name} area={m.area} size={AVATAR_SIZE[size]} photo={m.photo} />
       <div className="flex flex-col gap-0.5">
         <div
           className="font-serif font-normal"
