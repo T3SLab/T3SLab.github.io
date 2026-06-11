@@ -2,11 +2,14 @@
 
 import { useState } from "react";
 import { Avatar } from "@/components/ui/Avatar";
+import { Icon } from "@/components/ui/Icon";
 import { MEMBERS, type Member, type MemberKind } from "@/data";
 
 const GROUPS: { key: MemberKind; title: string; size: "lg" | "md" | "sm" }[] = [
   { key: "faculty", title: "Professors", size: "lg" },
   { key: "phd", title: "PhD Students", size: "md" },
+  { key: "ms", title: "MS Students", size: "md" },
+  { key: "undergrad", title: "Undergraduate Students", size: "sm" },
 ];
 
 const AVATAR_SIZE = { lg: 128, md: 96, sm: 64 };
@@ -126,6 +129,33 @@ function MemberCard({
         {m.area && (
           <div style={{ fontSize: "var(--fs-sm)", color: "var(--fg-2)" }}>
             {m.area}
+          </div>
+        )}
+        {(m.email || m.website) && (
+          <div
+            className="flex flex-wrap gap-2 font-mono"
+            style={{ marginTop: "var(--space-2)", fontSize: "var(--fs-xs)" }}
+          >
+            {m.email && (
+              <a
+                href={`mailto:${m.email}`}
+                className="member-link inline-flex items-center gap-1"
+              >
+                <span className="member-link-label">Email</span>
+                <Icon name="ext" size={9} />
+              </a>
+            )}
+            {m.website && (
+              <a
+                href={m.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="member-link inline-flex items-center gap-1"
+              >
+                <span className="member-link-label">Website</span>
+                <Icon name="ext" size={9} />
+              </a>
+            )}
           </div>
         )}
       </div>

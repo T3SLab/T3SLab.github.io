@@ -15,6 +15,7 @@ const TABS = [
   { href: "/members", label: "Members" },
   { href: "/ctfs", label: "CTFs" },
   { href: "/projects", label: "Projects" },
+  { href: "/news", label: "News" },
   { href: "/blogs", label: "Blog" },
 ];
 
@@ -65,6 +66,13 @@ function ThemeToggle() {
 export function Topbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
@@ -82,7 +90,8 @@ export function Topbar() {
           style={{
             maxWidth: "var(--content-max)",
             margin: "0 auto",
-            padding: "14px var(--gutter)",
+            padding: `${scrolled ? 8 : 14}px var(--gutter)`,
+            transition: "padding 0.2s ease",
           }}
         >
           {/* Brand */}
@@ -136,9 +145,10 @@ export function Topbar() {
                       style={{
                         left: 12,
                         right: 12,
-                        bottom: -15,
+                        bottom: scrolled ? -9 : -15,
                         height: 2,
                         background: "var(--accent)",
+                        transition: "bottom 0.2s ease",
                       }}
                     />
                   )}

@@ -28,7 +28,8 @@ function CTFsContent() {
     return b.date.localeCompare(a.date);
   });
 
-  const best = Math.min(...CTFS.map((c) => c.place));
+  const ranked = CTFS.filter((c) => c.place > 0);
+  const best = ranked.length > 0 ? Math.min(...ranked.map((c) => c.place)) : 0;
   const totalWriteups = CTFS.reduce((s, c) => s + c.writeups, 0);
 
   return (
@@ -48,10 +49,9 @@ function CTFsContent() {
           textWrap: "pretty" as React.CSSProperties["textWrap"],
         }}
       >
-        T3S fields a CTF team that competes year-round — primarily in jeopardy
-        events, with a focus on pwn, reverse engineering, and side-channel
-        challenges that mirror our research. We publish writeups for every
-        solve.
+        T3S competes in embedded security competitions — primarily MITRE eCTF,
+        an attack/defense competition focused on microcontroller security that
+        directly mirrors our research. Team captain: Sebastian Lucero-Chavez.
       </p>
 
       {/* Overview stats */}
@@ -65,13 +65,13 @@ function CTFsContent() {
         }}
       >
         {[
-          { label: "Best finish", value: `#${best}` },
+          { label: "Best finish", value: best > 0 ? `#${best}` : "—" },
           {
             label: "Events this cycle",
             value: CTFS.length.toString().padStart(2, "0"),
           },
           { label: "Writeups published", value: String(totalWriteups) },
-          { label: "Captain", value: "P. Patel" },
+          { label: "Captain", value: "S. Lucero-Chavez" },
         ].map((s, i) => (
           <div
             key={s.label}
@@ -219,18 +219,26 @@ function CTFRow({ event: c }: { event: CTFEvent }) {
             whiteSpace: "nowrap",
           }}
         >
-          <span style={{ color: "var(--muted)" }}>#</span>
-          {c.place}
-          <span
-            className="font-mono"
-            style={{
-              fontSize: "var(--fs-xs)",
-              color: "var(--muted)",
-              marginLeft: 2,
-            }}
-          >
-            /{c.of}
-          </span>
+          {c.place > 0 ? (
+            <>
+              <span style={{ color: "var(--muted)" }}>#</span>
+              {c.place}
+              {c.of > 0 && (
+                <span
+                  className="font-mono"
+                  style={{
+                    fontSize: "var(--fs-xs)",
+                    color: "var(--muted)",
+                    marginLeft: 2,
+                  }}
+                >
+                  /{c.of}
+                </span>
+              )}
+            </>
+          ) : (
+            <span style={{ color: "var(--muted)" }}>—</span>
+          )}
         </td>
         <td
           className="hidden sm:table-cell font-mono"
@@ -291,25 +299,59 @@ function CTFRow({ event: c }: { event: CTFEvent }) {
                 notes
               </span>
               {c.notes}
-              <div
-                className="flex flex-wrap gap-3 font-mono"
-                style={{
-                  marginTop: "var(--space-3)",
-                  fontSize: "var(--fs-xs)",
-                }}
-              >
-                {Array.from({ length: c.writeups }).map((_, i) => (
-                  <a
-                    key={i}
-                    href="#"
-                    className="inline-flex items-center gap-1"
-                    style={{ color: "var(--link)" }}
-                  >
-                    writeup-{String(i + 1).padStart(2, "0")}{" "}
-                    <Icon name="ext" size={10} />
-                  </a>
-                ))}
-              </div>
+              {(c.repo || c.writeups > 0) && (
+                <div
+                  className="flex flex-wrap gap-3 font-mono"
+                  style={{
+                    marginTop: "var(--space-3)",
+                    fontSize: "var(--fs-xs)",
+                  }}
+                >
+                  {c.repo && (
+                    <a
+                      href={c.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1"
+                      style={{ color: "var(--link)" }}
+                    >
+                      GitHub repo <Icon name="ext" size={10} />
+                    </a>
+                  )}
+                  {Array.from({ length: c.writeups }).map((_, i) => (
+                    <a
+                      key={i}
+                      href="#"
+                      className="inline-flex items-center gap-1"
+                      style={{ color: "var(--link)" }}
+                    >
+                      writeup-{String(i + 1).padStart(2, "0")}{" "}
+                      <Icon name="ext" size={10} />
+                    </a>
+                  ))}
+                </div>
+              )}
+              {c.photos && c.photos.length > 0 && (
+                <div
+                  className="flex flex-wrap gap-3"
+                  style={{ marginTop: "var(--space-4)" }}
+                >
+                  {c.photos.map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt={`${c.name} photo ${i + 1}`}
+                      style={{
+                        height: 140,
+                        width: "auto",
+                        borderRadius: "var(--r-sm)",
+                        border: "1px solid var(--rule)",
+                        objectFit: "cover",
+                      }}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           </td>
         </tr>

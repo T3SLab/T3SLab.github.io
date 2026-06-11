@@ -1,12 +1,12 @@
 export const LAB = {
   name: "T3S Lab",
-  full: "Trusted Systems, Security & Software Lab",
+  full: "Trusted Systems & Software Security Lab",
   tagline: "Hardware-rooted security for the systems that run the world.",
   mission:
-    "We study the security of modern computing platforms — with a focus on Arm CPUs, GPUs, and the trusted execution environments that sit between them. Our work spans micro-architectural side channels, firmware attestation, GPU isolation, and the operating-system primitives that make platform security tractable.",
+    "We study the security of modern computing platforms — with a focus on Arm CPUs, FPGAs, and the trusted execution environments that sit between them. Our work spans micro-architectural side channels, firmware attestation, FPGA-based confidential computing, and the operating-system primitives that make platform security tractable.",
   university: "The University of Texas at El Paso",
   department: "Department of Computer Science",
-  email: "t3s-lab@utep.edu",
+  email: "marmanuzzaman@utep.edu",
   address: "500 W University Ave · El Paso, TX 79968",
 } as const;
 
@@ -17,10 +17,10 @@ export interface Stat {
 }
 
 export const STATS: Stat[] = [
-  { k: "Publications", v: "42", sub: "since 2021" },
-  { k: "CTF top-10s", v: "11", sub: "2023 — 2026" },
-  { k: "Active members", v: "14", sub: "PhD · MS · BS" },
-  { k: "Sponsors", v: "6", sub: "NSF · industry" },
+  { k: "Publications", v: "9+", sub: "since 2021" },
+  { k: "eCTF entries", v: "2", sub: "2025 — 2026" },
+  { k: "Active members", v: "7", sub: "PhD · MS · BS" },
+  { k: "Industry partners", v: "1", sub: "Octavo Systems" },
 ];
 
 export interface PILink {
@@ -35,6 +35,7 @@ export const PI = {
   pronouns: "he/him",
   bio: "Dr. Armanuzzaman is a Tenure-Track Assistant Professor in the Department of Computer Science at UTEP, where he directs the T3S Lab. His research focuses on systems and software security — with emphasis on trusted execution environments, FPGA security, embedded and IoT systems, operating systems security, and machine learning security. Before joining UTEP, he was a Postdoctoral Research Associate at Northeastern University's Khoury College of Computer Sciences. He earned his PhD from the University at Buffalo under Professor Ziming Zhao, and his BSc from Khulna University of Engineering and Technology. His work has appeared at ACM CCS, NDSS, ASIACCS, IEEE INFOCOM, and USENIX SEED.",
   links: [
+    { label: "Website", href: "https://tomal-kuet.github.io/armanuzzaman/" },
     {
       label: "Google Scholar",
       href: "https://scholar.google.com/citations?user=TSEtWiUAAAAJ",
@@ -56,27 +57,27 @@ export interface NewsItem {
 export const NEWS: NewsItem[] = [
   {
     date: "2026 · 05",
-    body: "Two papers accepted at USENIX Security 2026: ArmGuard and Speculative GPU disclosure.",
+    body: "Lab finishes 42nd at MITRE eCTF 2026. Our implementation is open-sourced on GitHub.",
   },
   {
-    date: "2026 · 04",
-    body: "T3S placed 7th at PlaidCTF — our highest finish to date.",
-  },
-  {
-    date: "2026 · 03",
-    body: "Dr. Armanuzzaman receives the NSF CAREER award for work on trusted execution environments.",
-  },
-  {
-    date: "2026 · 02",
-    body: "New collaboration with Arm Research on cache-side-channel mitigations for Neoverse.",
+    date: "2026 · 05",
+    body: "New industry collaboration with Octavo Systems on FPGA Confidential Computing.",
   },
   {
     date: "2026 · 01",
-    body: "Welcome to Priya, Marcus and Diego — three new PhD students join the lab.",
+    body: "Paper accepted at ACM CCS 2026 on cryptographic practices in securing microcontrollers from embedded CTFs.",
   },
   {
     date: "2025 · 11",
-    body: "Best-paper runner-up at MICRO 2025 for our work on GPU memory isolation.",
+    body: "Paper accepted at ACM CCS 2025 — insights and challenges for securing microcontroller systems from embedded CTF competitions.",
+  },
+  {
+    date: "2025 · 06",
+    body: "Three papers accepted: NDSS 2025, IEEE INFOCOM 2025, and IEEE TIFS 2025.",
+  },
+  {
+    date: "2026 · 08",
+    body: "Welcome Shovo and Monaem — two new PhD students join the lab for Fall 2026.",
   },
 ];
 
@@ -244,6 +245,8 @@ export interface Member {
   since: string;
   area: string;
   photo?: string;
+  email?: string;
+  website?: string;
 }
 
 export const MEMBERS: Record<MemberKind, Member[]> = {
@@ -254,6 +257,8 @@ export const MEMBERS: Record<MemberKind, Member[]> = {
       since: "2024",
       area: "Systems & software security",
       photo: "/assets/pictures/armanuzzaman.jpg",
+      email: "marmanuzzaman@utep.edu",
+      website: "https://tomal-kuet.github.io/armanuzzaman/",
     },
   ],
   postdoc: [],
@@ -271,10 +276,42 @@ export const MEMBERS: Record<MemberKind, Member[]> = {
       since: "2026",
       area: "PACBTI & Compartmentalization",
       photo: "/assets/pictures/shanto.png",
+      email: "almonaemkhan@gmail.com",
+      website: "https://monaemportfolio.netlify.app/",
     },
   ],
-  ms: [],
-  undergrad: [],
+  ms: [
+    {
+      name: "Sebastian Balderrama",
+      role: "MS Student",
+      since: "2025",
+      area: "ARM CCA model deployment Security",
+      email: "sbalderrama3@miners.utep.edu",
+    },
+    {
+      name: "Jose R. Chaidez",
+      role: "MS Student",
+      since: "2025",
+      area: "LLM Agent Security",
+      email: "jrchaidez@miners.utep.edu",
+    },
+  ],
+  undergrad: [
+    {
+      name: "Sebastian M. Lucero-Chavez",
+      role: "Undergraduate Student",
+      since: "2025",
+      area: "Team Captain, Embedded Capture the Flag Competitions",
+      email: "smlucerochavez@miners.utep.edu",
+    },
+    {
+      name: "Karla G. Monroy",
+      role: "Undergraduate Student",
+      since: "2025",
+      area: "RTOS Task Security",
+      email: "kgmonroy@miners.utep.edu",
+    },
+  ],
   alumni: [],
 };
 
@@ -287,72 +324,37 @@ export interface CTFEvent {
   category: string;
   notes: string;
   writeups: number;
+  repo?: string;
+  photos?: string[];
 }
 
 export const CTFS: CTFEvent[] = [
   {
-    name: "PlaidCTF 2026",
-    date: "2026 · 04",
-    place: 7,
-    of: 612,
-    points: 11430,
-    category: "Jeopardy · Open",
-    notes:
-      "First top-10 in the lab's history. Highlight: Diego's solo solve on the GPU shader pwn.",
-    writeups: 4,
-  },
-  {
-    name: "DEF CON Qualifier 2026",
+    name: "MITRE eCTF 2026",
     date: "2026 · 05",
-    place: 31,
-    of: 480,
-    points: 6210,
-    category: "Qualifier",
+    place: 42,
+    of: 0,
+    points: 0,
+    category: "Attack/Defense · Embedded",
     notes:
-      "Solid pwn track, dropped points in crypto. Aiming for top-20 next cycle.",
-    writeups: 2,
+      "42nd place at MITRE eCTF 2026. Competition focused on embedded systems security. Our implementation is open-sourced on GitHub.",
+    writeups: 0,
+    repo: "https://github.com/t3s-lab/ectf-2026",
+    photos: [
+      "/assets/pictures/e-ctf-2026/01.png",
+      "/assets/pictures/e-ctf-2026/02.png",
+    ],
   },
   {
-    name: "hxp 38C3 CTF",
-    date: "2025 · 12",
-    place: 14,
-    of: 720,
-    points: 8870,
-    category: "Jeopardy",
-    notes: "Strong rev showing — Carlos solved 4/5 reverse challenges.",
-    writeups: 3,
-  },
-  {
-    name: "CSAW Quals 2025",
-    date: "2025 · 09",
-    place: 4,
-    of: 1200,
-    points: 4960,
-    category: "Regional",
+    name: "MITRE eCTF 2025",
+    date: "2025 · 05",
+    place: 0,
+    of: 0,
+    points: 0,
+    category: "Attack/Defense · Embedded",
     notes:
-      "Qualified for the Finals in Brooklyn. Team of six undergrads + Marcus.",
-    writeups: 5,
-  },
-  {
-    name: "Google CTF 2025",
-    date: "2025 · 06",
-    place: 22,
-    of: 902,
-    points: 5450,
-    category: "Jeopardy",
-    notes: "Crypto challenges crushed us; web track was clean sweep.",
-    writeups: 2,
-  },
-  {
-    name: "PlaidCTF 2025",
-    date: "2025 · 04",
-    place: 18,
-    of: 588,
-    points: 6720,
-    category: "Jeopardy · Open",
-    notes:
-      "First time fielding two squads. B-team placed 91st — great learning run.",
-    writeups: 3,
+      "Lab's first participation in MITRE eCTF. Work contributed to our CCS 2025 paper on securing microcontroller systems.",
+    writeups: 0,
   },
 ];
 

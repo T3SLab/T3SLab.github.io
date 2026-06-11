@@ -8,7 +8,7 @@ import { PubRow } from "@/components/ui/PubRow";
 import { LAB, STATS, PI, NEWS, PUBLICATIONS } from "@/data";
 
 export const metadata: Metadata = {
-  title: "T₃S Lab — Trusted Systems, Security & Software",
+  title: "T₃S Lab — Trusted Systems & Software Security Lab",
 };
 
 export default function HomePage() {
@@ -154,7 +154,7 @@ function Hero() {
         >
           <Link
             href="/publications"
-            className="inline-flex items-center gap-2 font-medium rounded-(--r-md) transition-transform duration-[120ms] hover:-translate-y-px"
+            className="inline-flex items-center gap-2 font-medium rounded-(--r-md) transition-transform duration-120 hover:-translate-y-px"
             style={{
               fontSize: 14,
               border: "1px solid var(--fg)",
@@ -188,9 +188,7 @@ function Hero() {
           borderTop: "1px solid var(--rule)",
         }}
       >
-        <dl
-          className="m-0 p-0 grid gap-(--space-5) grid-cols-2 md:grid-cols-4"
-        >
+        <dl className="m-0 p-0 grid gap-(--space-5) grid-cols-2 md:grid-cols-4">
           {[
             { dt: "Director", dd: PI.name },
             { dt: "Department", dd: LAB.department },
@@ -288,8 +286,13 @@ function DirectorSection() {
       <div className="grid gap-(--space-7) items-start grid-cols-1 md:grid-cols-[260px_1fr]">
         {/* Portrait + links */}
         <div className="flex flex-col gap-(--space-4)">
-          <PortraitSlot src="/assets/pictures/armanuzzaman_portrait.jpg" alt="Dr. Md. Armanuzzaman" width={260} height={320} />
-          <div className="flex flex-col gap-1.5 font-mono">
+          <PortraitSlot
+            src="/assets/pictures/armanuzzaman_portrait.jpg"
+            alt="Dr. Md. Armanuzzaman"
+            width={260}
+            height={320}
+          />
+          <div className="flex flex-wrap gap-x-4 gap-y-1.5 font-mono">
             {PI.links.map((l) => (
               <a
                 key={l.label}
@@ -376,22 +379,44 @@ function LatestPublications() {
   );
 }
 
+function parseNewsDate(date: string): number {
+  const [year, month] = date.split("·").map((s) => parseInt(s.trim(), 10));
+  return year * 100 + (month || 0);
+}
+
 function NewsSection() {
+  const sorted = [...NEWS].sort(
+    (a, b) => parseNewsDate(b.date) - parseNewsDate(a.date),
+  );
   return (
     <section style={{ paddingBottom: "var(--space-9)" }}>
-      <SectionHeader kicker="Newsroom" title="News & announcements" />
+      <SectionHeader
+        kicker="Newsroom"
+        title="News & announcements"
+        right={
+          <Link
+            href="/news"
+            className="link-muted-accent inline-flex items-center gap-1 font-mono"
+            style={{
+              fontSize: "var(--fs-xs)",
+              letterSpacing: "0.04em",
+              textDecoration: "none",
+            }}
+          >
+            All news <Icon name="arrow" size={12} />
+          </Link>
+        }
+      />
       <ul className="list-none m-0 p-0">
-        {NEWS.map((n, i) => (
+        {sorted.slice(0, 5).map((n, i) => (
           <li
             key={i}
             className="grid items-baseline gap-(--space-5)"
             style={{
               gridTemplateColumns: "120px 1fr",
-              padding: "var(--space-4) 0",
-              borderTop: "1px solid var(--rule)",
-              ...(i === NEWS.length - 1
-                ? { borderBottom: "1px solid var(--rule)" }
-                : {}),
+              paddingTop: "var(--space-4)",
+              paddingBottom: "var(--space-4)",
+              borderBottom: "1px solid var(--rule)",
             }}
           >
             <span

@@ -46,20 +46,24 @@ export function Footer() {
             </FooterCol>
             <FooterCol heading="Contact">
               <a href={`mailto:${LAB.email}`}>{LAB.email}</a>
-              <a href="#">Visit · directions</a>
-              <a href="#">Prospective students</a>
             </FooterCol>
             <FooterCol heading="Elsewhere">
-              <a href="#" className="inline-flex items-center gap-1">
+              <a
+                href="https://github.com/t3s-lab"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1"
+              >
                 GitHub <Icon name="ext" size={10} />
               </a>
-              <a href="#" className="inline-flex items-center gap-1">
+              <a
+                href="https://scholar.google.com/citations?user=TSEtWiUAAAAJ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1"
+              >
                 Google Scholar <Icon name="ext" size={10} />
               </a>
-              <a href="#" className="inline-flex items-center gap-1">
-                arXiv <Icon name="ext" size={10} />
-              </a>
-              <a href="#">RSS</a>
             </FooterCol>
           </div>
         </div>

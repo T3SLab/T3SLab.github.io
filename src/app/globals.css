@@ -363,6 +363,16 @@ a:hover {
   color: var(--accent);
 }
 
+.member-link {
+  color: var(--link);
+}
+.member-link .member-link-label {
+  text-underline-offset: 2px;
+}
+.member-link:hover .member-link-label {
+  text-decoration: underline;
+}
+
 /* ── Scrollbar (subtle) ────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;
