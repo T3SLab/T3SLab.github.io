@@ -81,7 +81,13 @@ export const NEWS: NewsItem[] = [
   },
 ];
 
-export type PubTopic = "tee" | "embedded" | "ml" | "firmware";
+export type PubTopic =
+  | "tee"
+  | "embedded"
+  | "ml"
+  | "firmware"
+  | "cfi"
+  | "attestation";
 
 export interface Publication {
   year: number;
@@ -98,6 +104,17 @@ export interface Publication {
 export const PUBLICATIONS: Publication[] = [
   {
     year: 2026,
+    venue: "EMSOFT",
+    topic: "cfi",
+    title:
+      "ENOLA: Linear-Space and Low-Overhead Control-Flow Attestation for Microcontroller-based Systems",
+    authors: ["Md. Armanuzzaman", "E. Kirda", "Z. Zhao"],
+    pdf: "/downloads/enola.pdf",
+    bib: "/downloads/enola.bib",
+    code: "https://github.com/CactiLab/ENOLA-Efficient-CFA-for-Embedded-Systems",
+  },
+  {
+    year: 2026,
     venue: "CCS",
     topic: "embedded",
     title:
@@ -110,6 +127,9 @@ export const PUBLICATIONS: Publication[] = [
       "X. Tan",
       "Z. Zhao",
     ],
+    pdf: "/downloads/ectf-crypto.pdf",
+    bib: "/downloads/ectf-crypto.bib",
+    code: "https://github.com/CactiLab/eCTF-Crypto-Material",
   },
   {
     year: 2025,
@@ -128,7 +148,9 @@ export const PUBLICATIONS: Publication[] = [
       "R. Walls",
       "Z. Zhao",
     ],
-    pdf: "downloads/Insights-from-eCTF.pdf",
+    pdf: "/downloads/Insights-from-eCTF.pdf",
+    bib: "/downloads/Insights-from-eCTF.bib",
+    code: "https://github.com/CactiLab/eCTF-User-Study-Material",
   },
   {
     year: 2025,
@@ -137,14 +159,8 @@ export const PUBLICATIONS: Publication[] = [
     title:
       "Efficient and Secure Multi-qubit Broadcast-based Quantum Federated Learning",
     authors: ["R. Zhang", "J. Wang", "N. Jiang", "Md. Armanuzzaman", "Z. Zhao"],
-  },
-  {
-    year: 2025,
-    venue: "arXiv",
-    topic: "firmware",
-    title: "ENOLA: Efficient Control-Flow Attestation for Embedded Systems",
-    authors: ["Md. Armanuzzaman", "E. Kirda", "Z. Zhao"],
-    pdf: "downloads/enola.pdf",
+    pdf: "/downloads/quantum-fl.pdf",
+    bib: "/downloads/quantum-fl.bib",
   },
   {
     year: 2025,
@@ -164,6 +180,8 @@ export const PUBLICATIONS: Publication[] = [
       "Md. Armanuzzaman",
       "Z. Zhao",
     ],
+    pdf: "/downloads/tls13.pdf",
+    bib: "/downloads/tls13.bib",
   },
   {
     year: 2025,
@@ -180,6 +198,9 @@ export const PUBLICATIONS: Publication[] = [
       "Md. Armanuzzaman",
       "Z. Zhao",
     ],
+    pdf: "/downloads/mia-pruning.pdf",
+    bib: "/downloads/mia-pruning.bib",
+    code: "https://github.com/CactiLab/WeMeM",
   },
   {
     year: 2024,
@@ -187,7 +208,9 @@ export const PUBLICATIONS: Publication[] = [
     topic: "tee",
     title: "Building Your Own Trusted Execution Environments Using FPGA",
     authors: ["Md. Armanuzzaman", "A.-R. Sadeghi", "Z. Zhao"],
-    pdf: "downloads/byotee.pdf",
+    pdf: "/downloads/byotee.pdf",
+    bib: "/downloads/byotee.bib",
+    code: "https://github.com/CactiLab/BYOTee-Build-Your-Own-TEEs",
   },
   {
     year: 2024,
@@ -205,7 +228,8 @@ export const PUBLICATIONS: Publication[] = [
       "H. Hu",
       "Z. Zhao",
     ],
-    pdf: "downloads/canary.pdf",
+    pdf: "/downloads/canary.pdf",
+    bib: "/downloads/canary.bib",
   },
   {
     year: 2024,
@@ -214,7 +238,8 @@ export const PUBLICATIONS: Publication[] = [
     title:
       "Trusted Execution Environments in Embedded and IoT Systems: A CactiLab Perspective",
     authors: ["Z. Zhao", "Md. Armanuzzaman", "X. Tan", "Z. Ma"],
-    pdf: "downloads/zhao2024seed.pdf",
+    pdf: "/downloads/zhao2024seed.pdf",
+    bib: "/downloads/zhao2024seed.bib",
   },
 ];
 
@@ -229,6 +254,8 @@ export const PUB_TOPICS: PubTopicFilter[] = [
   { id: "embedded", label: "Embedded & IoT" },
   { id: "firmware", label: "Firmware & attestation" },
   { id: "ml", label: "ML security" },
+  { id: "cfi", label: "Control-Flow Integrity" },
+  { id: "attestation", label: "Attestation" },
 ];
 
 export type MemberKind =
@@ -264,11 +291,11 @@ export const MEMBERS: Record<MemberKind, Member[]> = {
   postdoc: [],
   phd: [
     {
-      name: "Md. Shafiq Newaj Shovo",
+      name: "Shawnock Guha Paul",
       role: "PhD, Year 1",
-      since: "2026",
+      since: "2027",
       area: "Realms & TrustZone",
-      photo: "/assets/pictures/shovo.jpg",
+      // photo: "/assets/pictures/shovo.jpg",
     },
     {
       name: "Al Monaem Khan",

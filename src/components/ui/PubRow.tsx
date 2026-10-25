@@ -1,5 +1,6 @@
 import { type Publication } from '@/data'
 import { Pill } from './Pill'
+import { CopyBibLink } from './CopyBibLink'
 
 interface PubRowProps {
   pub: Publication
@@ -73,11 +74,22 @@ export function PubRow({ pub }: PubRowProps) {
             className="font-mono flex gap-[var(--space-3)] ml-auto"
             style={{ fontSize: 'var(--fs-xs)' }}
           >
-            {[['pdf', pub.pdf], ['bib', pub.bib], ['code', pub.code]].map(([label, href]) => (
-              <a key={label} href={href ?? '#'} className="pub-link">
+            {[['pdf', pub.pdf], ['bib', pub.bib], ['code', pub.code]].map(([label, href]) =>
+              label === 'bib' && href ? (
+                <CopyBibLink key={label} href={href} />
+              ) : (
+              <a
+                key={label}
+                href={href ?? '#'}
+                className="pub-link"
+                {...(label === 'pdf' && href
+                  ? { target: '_blank', rel: 'noopener noreferrer' }
+                  : {})}
+              >
                 {label}
               </a>
-            ))}
+              ),
+            )}
           </span>
         </div>
       </div>
